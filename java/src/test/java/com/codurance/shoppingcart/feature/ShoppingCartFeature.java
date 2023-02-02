@@ -1,9 +1,13 @@
 package com.codurance.shoppingcart.feature;
 
 import com.codurance.shoppingcart.Printer;
+import com.codurance.shoppingcart.Product;
 import com.codurance.shoppingcart.ProductRepository;
 import com.codurance.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codurance.shoppingcart.Discount.PROMO_5;
 import static org.mockito.Mockito.mock;
@@ -26,6 +30,9 @@ public class ShoppingCartFeature {
     "| Total productos: 8                       |\n" +
     "| Total price: 11.71 €                     |\n" +
     "--------------------------------------------";
+  private List<Product> PRODUCT_CATALOG = List.of(
+    new Product("Iceberg", 1.55, 15, 1.79, 21, 2.17)
+  );
 
   @Test
 	public void SeeAShoppingCartWithDiscountsApplied() { //Use case
@@ -33,7 +40,7 @@ public class ShoppingCartFeature {
 
     ShoppingCart shoppingCart = new ShoppingCart(printer);
 
-    ProductRepository productRepository = new ProductRepository();
+    ProductRepository productRepository = new ProductRepository(PRODUCT_CATALOG);
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
