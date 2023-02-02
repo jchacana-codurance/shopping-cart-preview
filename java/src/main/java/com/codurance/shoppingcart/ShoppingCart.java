@@ -3,7 +3,7 @@ package com.codurance.shoppingcart;
 public class ShoppingCart implements IShoppingCart {
   private Printer printer;
 
-  public ShoppingCart(Printer printer) {
+  public ShoppingCart(CartRepository cartRepository, Printer printer) {
     this.printer = printer;
   }
 

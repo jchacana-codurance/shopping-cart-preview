@@ -1,12 +1,12 @@
 package com.codurance.shoppingcart.feature;
 
+import com.codurance.shoppingcart.CartRepository;
 import com.codurance.shoppingcart.Printer;
 import com.codurance.shoppingcart.Product;
 import com.codurance.shoppingcart.ProductRepository;
 import com.codurance.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.codurance.shoppingcart.Discount.PROMO_5;
@@ -37,8 +37,8 @@ public class ShoppingCartFeature {
   @Test
 	public void SeeAShoppingCartWithDiscountsApplied() { //Use case
     Printer printer = mock(Printer.class);
-
-    ShoppingCart shoppingCart = new ShoppingCart(printer);
+    CartRepository cartRepository = new CartRepository();
+    ShoppingCart shoppingCart = new ShoppingCart(cartRepository, printer);
 
     ProductRepository productRepository = new ProductRepository(PRODUCT_CATALOG);
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
