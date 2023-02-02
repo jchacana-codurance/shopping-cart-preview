@@ -1,7 +1,5 @@
 package com.codurance.shoppingcart;
 
-import com.codurance.shoppingcart.feature.Discount;
-
 public interface IShoppingCart {
   void printShoppingCart();
 

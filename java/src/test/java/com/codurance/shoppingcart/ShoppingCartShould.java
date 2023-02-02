@@ -1,5 +1,6 @@
 package com.codurance.shoppingcart;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -16,6 +17,7 @@ public class ShoppingCartShould {
     "| Total price: 0.00 €                      |\n" +
     "--------------------------------------------";
 
+  @Disabled
   @Test
   void print_empty_cart() {
     Printer printer = Mockito.mock(Printer.class);

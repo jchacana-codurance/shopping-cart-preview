@@ -5,7 +5,7 @@ import com.codurance.shoppingcart.ProductRepository;
 import com.codurance.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
 
-import static com.codurance.shoppingcart.feature.Discount.PROMO_5;
+import static com.codurance.shoppingcart.Discount.PROMO_5;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -48,7 +48,5 @@ public class ShoppingCartFeature {
     shoppingCart.printShoppingCart();
 
     verify(printer).print(SHOPPING_CART_WITH_PRODUCTS_AND_PROMOCODE);
-
 	}
-
 }

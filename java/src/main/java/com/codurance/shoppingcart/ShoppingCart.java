@@ -1,7 +1,5 @@
 package com.codurance.shoppingcart;
 
-import com.codurance.shoppingcart.feature.Discount;
-
 public class ShoppingCart implements IShoppingCart {
   private Printer printer;
 

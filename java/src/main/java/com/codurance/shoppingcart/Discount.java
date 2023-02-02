@@ -1,4 +1,4 @@
-package com.codurance.shoppingcart.feature;
+package com.codurance.shoppingcart;
 
 public enum Discount {
   PROMO_5,
