@@ -4,10 +4,7 @@ import com.codurance.shoppingcart.Printer;
 import com.codurance.shoppingcart.Product;
 import com.codurance.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 import java.util.Map;
-
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 

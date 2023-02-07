@@ -1,4 +1,4 @@
-package com.codurance.shoppingcart.unitTests;
+package com.codurance.shoppingcart.unit;
 
 import com.codurance.shoppingcart.Printer;
 import org.junit.jupiter.api.Assertions;
