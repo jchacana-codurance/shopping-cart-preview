@@ -44,7 +44,6 @@ public class ShoppingCartShould {
     verify(printer).print(EMPTY_SHOPPING_CART);
   }
 
-  @Disabled
   @Test
   void printCartWithOneItem() {
     Printer printer = mock(Printer.class);

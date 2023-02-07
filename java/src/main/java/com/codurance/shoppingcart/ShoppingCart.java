@@ -1,9 +1,12 @@
 package com.codurance.shoppingcart;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingCart {
   Printer printer;
+  List<Product> productList = new ArrayList<>();
 
   public ShoppingCart(Printer printer) {
     this.printer = printer;
@@ -15,7 +18,7 @@ public class ShoppingCart {
     printer.print(textToPrint);
   }
 
-  private static String formatTicket() {
+  private String formatTicket() {
     String separatorWithPipe = "|------------------------------------------|\n";
     String separator = "--------------------------------------------";
 
@@ -36,13 +39,22 @@ public class ShoppingCart {
     return header + products + promotionCode + total;
   }
 
-  private static String getProducts() {
-//    return MessageFormat.format("| {productName}  | {productPriceWithVAT} € | {productQuantity} |\n",
-//      productName, productPriceWithVAT, productQuantity);
-    return "";
+  private String getProducts() {
+    String products = "";
+
+    for (Product product : productList) {
+      products += String.format("| %-11s  | %-14s | %-8s |\n",
+        product.name(), formatFinalPrice(product), 1);
+    }
+
+    return products;
+  }
+
+  private String formatFinalPrice(Product product) {
+    return product.finalCost() + " €";
   }
 
   public void addItem(Product product) {
-    throw new UnsupportedOperationException();
+    productList.add(product);
   }
 }
