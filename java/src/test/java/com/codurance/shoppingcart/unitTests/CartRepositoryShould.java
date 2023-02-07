@@ -17,8 +17,7 @@ public class CartRepositoryShould {
 
     Assertions.assertEquals( 1, cartRepository.byProductName("Some Product"));
   }
-
-  @Disabled
+  
   @Test
   void addMultipleSameItemsToProductList() {
     CartRepository cartRepository = new CartRepository();

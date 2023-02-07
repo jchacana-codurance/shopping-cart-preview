@@ -10,9 +10,9 @@ public class CartRepository {
     shoppingList.add(product);
   }
 
-  public int byProductName(String some_product) {
-    return Math.toIntExact(shoppingList.stream()
-      .filter(product -> some_product.equals(product.name()))
-      .count());
+  public Long byProductName(String productName) {
+    return shoppingList.stream()
+      .filter(product -> productName.equals(product.name()))
+      .count();
   }
 }
