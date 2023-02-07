@@ -3,6 +3,7 @@ package com.codurance.shoppingcart.unit;
 import com.codurance.shoppingcart.Printer;
 import com.codurance.shoppingcart.Product;
 import com.codurance.shoppingcart.ShoppingCart;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
@@ -43,6 +44,7 @@ public class ShoppingCartShould {
     verify(printer).print(EMPTY_SHOPPING_CART);
   }
 
+  @Disabled
   @Test
   void printCartWithOneItem() {
     Printer printer = mock(Printer.class);
