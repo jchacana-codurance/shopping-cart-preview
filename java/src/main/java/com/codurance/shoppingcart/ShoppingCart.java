@@ -8,6 +8,17 @@ public class ShoppingCart {
   }
 
   public void printShoppingCart() {
-    throw new UnsupportedOperationException();
+    String textToPrint =
+      "--------------------------------------------\n" +
+        "| Product name | Price with VAT | Quantity |\n" +
+        "| -----------  | -------------- | -------- |\n" +
+        "|------------------------------------------|\n" +
+        "| Promotion:                               |\n" +
+        "--------------------------------------------\n" +
+        "| Total products: 0                        |\n" +
+        "| Total price:  0.00 €                     |\n" +
+        "--------------------------------------------";
+
+    printer.print(textToPrint);
   }
 }
