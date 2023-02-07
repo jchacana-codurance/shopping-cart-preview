@@ -48,7 +48,7 @@ public class ShoppingCartFeature {
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
     shoppingCart.addItem(productRepository.getProductByName("Iceberg"));
-    shoppingCart.addItem(productRepository.getProductByName("Tomatoe"));
+    shoppingCart.addItem(productRepository.getProductByName("Tomato"));
     shoppingCart.addItem(productRepository.getProductByName("Chicken"));
     shoppingCart.addItem(productRepository.getProductByName("Bread"));
     shoppingCart.addItem(productRepository.getProductByName("Bread"));
