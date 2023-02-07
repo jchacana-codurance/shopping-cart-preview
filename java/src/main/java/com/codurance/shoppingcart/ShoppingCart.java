@@ -2,8 +2,10 @@ package com.codurance.shoppingcart;
 
 public class ShoppingCart implements IShoppingCart {
   private Printer printer;
+  private CartRepository cartRepository;
 
   public ShoppingCart(CartRepository cartRepository, Printer printer) {
+    this.cartRepository = cartRepository;
     this.printer = printer;
   }
 
@@ -14,7 +16,7 @@ public class ShoppingCart implements IShoppingCart {
 
   @Override
   public void addItem(Product product) {
-    throw new UnsupportedOperationException();
+    cartRepository.addItem(product);
   }
 
   @Override
