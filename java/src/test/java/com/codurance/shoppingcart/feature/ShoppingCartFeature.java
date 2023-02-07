@@ -80,7 +80,7 @@ public class ShoppingCartFeature {
 class TestablePrinter extends Printer{
 
   @Override
-  public void print(String emptyShoppingCart) {
-    super.print(emptyShoppingCart);
+  public String print(String input) {
+    return super.print(input);
   }
 }
