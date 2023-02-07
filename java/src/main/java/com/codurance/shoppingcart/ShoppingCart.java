@@ -16,7 +16,7 @@ public class ShoppingCart implements IShoppingCart {
 
   @Override
   public void addItem(Product product) {
-    cartRepository.addItem(product);
+    cartRepository.add(product);
   }
 
   @Override

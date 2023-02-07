@@ -31,7 +31,6 @@ public class ShoppingCartShould {
     shoppingCart.printShoppingCart();
 
     Mockito.verify(printer).print(EMPTY_CART);
-
   }
 
   @Test
@@ -43,6 +42,6 @@ public class ShoppingCartShould {
     Product product = new Product("Some Product", 1.00, 1, 1.79, 10, 2.17);
     shoppingCart.addItem(product);
 
-    Mockito.verify(cartRepository).addItem(product);
+    Mockito.verify(cartRepository).add(product);
   }
 }
