@@ -31,7 +31,11 @@ public class ShoppingCartFeature {
     "| Total price: 11.71 €                     |\n" +
     "--------------------------------------------";
   private List<Product> PRODUCT_CATALOG = List.of(
-    new Product("Iceberg", 1.55, 15, 1.79, 21, 2.17)
+    new Product("Iceberg", 1.55, 15, 1.79, 21, 2.17),
+    new Product("Tomato", 0.52, 15, 0.60, 21, 0.73),
+    new Product("Chicken", 1.34, 12, 1.51, 21, 1.83),
+    new Product("Bread", 0.71, 12, 0.80, 10, 0.88),
+    new Product("Corn", 1.21, 12, 1.36, 10, 1.50)
   );
 
   @Test
