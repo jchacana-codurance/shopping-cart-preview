@@ -3,7 +3,8 @@ package com.codurance.shoppingcart.feature;
 import com.codurance.shoppingcart.Printer;
 import com.codurance.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.mock;
+
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 public class ShoppingCartFeature {
@@ -13,16 +14,16 @@ public class ShoppingCartFeature {
     "| Product name | Price with VAT | Quantity |\n" +
     "| -----------  | -------------- | -------- |\n" +
     "| Iceberg      | 2.17 €         | 3        |\n" +
-      "| Tomatoe      | 0.73 €         | 1        |\n" +
-      "| Chicken      | 1.83 €         | 1        |\n" +
-      "| Bread        | 0.88 €         | 2        |\n" +
-      "| Corn         | 1.50 €         | 1        |\n" +
-      "|------------------------------------------|\n" +
-      "| Promotion: 5% off with code PROMO_5      |\n" +
-      "--------------------------------------------\n" +
-      "| Total productos: 8                       |\n" +
-      "| Total price: 11.71 €                     |\n" +
-      "--------------------------------------------";
+    "| Tomatoe      | 0.73 €         | 1        |\n" +
+    "| Chicken      | 1.83 €         | 1        |\n" +
+    "| Bread        | 0.88 €         | 2        |\n" +
+    "| Corn         | 1.50 €         | 1        |\n" +
+    "|------------------------------------------|\n" +
+    "| Promotion: 5% off with code PROMO_5      |\n" +
+    "--------------------------------------------\n" +
+    "| Total products: 8                        |\n" +
+    "| Total price: 11.71 €                     |\n" +
+    "--------------------------------------------";
 
   private static final String EMPTY_SHOPPING_CART =
     "--------------------------------------------\n" +
@@ -31,7 +32,7 @@ public class ShoppingCartFeature {
       "|------------------------------------------|\n" +
       "| Promotion:                               |\n" +
       "--------------------------------------------\n" +
-      "| Total productos: 0                       |\n" +
+      "| Total products: 0                        |\n" +
       "| Total price:  0.00 €                     |\n" +
       "--------------------------------------------";
 //  private List<Product> PRODUCT_CATALOG = List.of(
@@ -44,7 +45,7 @@ public class ShoppingCartFeature {
 
   @Test
   public void SeeEmptyShoppingCart() {
-    Printer printer = mock(Printer.class);
+    TestablePrinter printer = spy(new TestablePrinter());
     ShoppingCart shoppingCart = new ShoppingCart(printer);
 
     shoppingCart.printShoppingCart();
@@ -52,7 +53,7 @@ public class ShoppingCartFeature {
     verify(printer).print(EMPTY_SHOPPING_CART);
   }
 
- /* @Test
+  /* @Test
 	public void SeeAShoppingCartWithDiscountsApplied() { //Use case
     Printer printer = mock(Printer.class);
     CartRepository cartRepository = new CartRepository();
@@ -74,4 +75,12 @@ public class ShoppingCartFeature {
 
     verify(printer).print(SHOPPING_CART_WITH_PRODUCTS_AND_PROMOCODE);
 	}*/
+}
+
+class TestablePrinter extends Printer{
+
+  @Override
+  public void print(String emptyShoppingCart) {
+    super.print(emptyShoppingCart);
+  }
 }
