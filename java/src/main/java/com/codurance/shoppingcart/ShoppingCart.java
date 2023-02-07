@@ -21,4 +21,8 @@ public class ShoppingCart {
 
     printer.print(textToPrint);
   }
+
+  public void addItem(Product product) {
+    throw new UnsupportedOperationException();
+  }
 }
