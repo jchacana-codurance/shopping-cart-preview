@@ -1,5 +1,7 @@
 package com.codurance.shoppingcart;
 
-public interface Printer {
-  void print(String content);
+public class Printer {
+  public void print(String emptyShoppingCart) {
+    throw new UnsupportedOperationException();
+  }
 }
