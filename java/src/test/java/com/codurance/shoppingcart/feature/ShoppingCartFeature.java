@@ -1,9 +1,11 @@
 package com.codurance.shoppingcart.feature;
 
+import com.codurance.shoppingcart.CartRepository;
 import com.codurance.shoppingcart.Printer;
 import com.codurance.shoppingcart.Product;
 import com.codurance.shoppingcart.ShoppingCart;
 import org.junit.jupiter.api.Test;
+
 import java.util.Map;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -63,8 +65,9 @@ public class ShoppingCartFeature {
 
   @Test
   public void SeeEmptyShoppingCart() {
+    CartRepository repo = new CartRepository();
     TestablePrinter printer = spy(new TestablePrinter());
-    ShoppingCart shoppingCart = new ShoppingCart(printer);
+    ShoppingCart shoppingCart = new ShoppingCart(printer, repo);
 
     shoppingCart.printShoppingCart();
 
@@ -74,7 +77,8 @@ public class ShoppingCartFeature {
   @Test
   public void SeeAShoppingCartWithProducts() {
     TestablePrinter printer = spy(new TestablePrinter());
-    ShoppingCart shoppingCart = new ShoppingCart(printer);
+    CartRepository repo = new CartRepository();
+    ShoppingCart shoppingCart = new ShoppingCart(printer, repo);
     shoppingCart.addItem(PRODUCT_CATALOG.get("Iceberg"));
     shoppingCart.addItem(PRODUCT_CATALOG.get("Tomato"));
     shoppingCart.addItem(PRODUCT_CATALOG.get("Chicken"));

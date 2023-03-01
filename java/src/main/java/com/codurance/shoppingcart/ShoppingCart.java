@@ -1,15 +1,16 @@
 package com.codurance.shoppingcart;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
   Printer printer;
+  private CartRepository repo;
   List<Product> productList = new ArrayList<>();
 
-  public ShoppingCart(Printer printer) {
+  public ShoppingCart(Printer printer, CartRepository repo) {
     this.printer = printer;
+    this.repo = repo;
   }
 
   public void printShoppingCart() {
@@ -26,17 +27,20 @@ public class ShoppingCart {
       "| Product name | Price with VAT | Quantity |\n" +
       "| -----------  | -------------- | -------- |\n";
 
-    String products = getProducts() +
-      separatorWithPipe;
+    String products = getProducts() + separatorWithPipe;
 
     String promotionCode = "| Promotion:                               |\n" +
       separator + "\n";
 
-    String total = "| Total products: 0                        |\n" +
-      "| Total price:  0.00 €                     |\n" +
-      separator;
+    String total = String.format("| Total products: %-25s|\n" +
+      "| Total price:  %s €                     |\n" +
+      separator, productList.size(), getFinalPrice());
 
     return header + products + promotionCode + total;
+  }
+
+  private String getFinalPrice() {
+    return productList.size() > 0? ""+ productList.get(0).finalCost(): "0.00";
   }
 
   private String getProducts() {
@@ -56,5 +60,6 @@ public class ShoppingCart {
 
   public void addItem(Product product) {
     productList.add(product);
+    repo.addItem(product);
   }
 }

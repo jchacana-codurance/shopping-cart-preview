@@ -1,5 +1,6 @@
 package com.codurance.shoppingcart.unit;
 
+import com.codurance.shoppingcart.CartRepository;
 import com.codurance.shoppingcart.Printer;
 import com.codurance.shoppingcart.Product;
 import com.codurance.shoppingcart.ShoppingCart;
@@ -22,7 +23,7 @@ public class ShoppingCartShould {
       "| Total price:  0.00 €                     |\n" +
       "--------------------------------------------";
 
-  private static final String SHOPPING_CART_WITH_PRODUCT =
+  private static final String SHOPPING_CART_WITH_ONE_PRODUCT =
     "--------------------------------------------\n" +
       "| Product name | Price with VAT | Quantity |\n" +
       "| -----------  | -------------- | -------- |\n" +
@@ -37,7 +38,8 @@ public class ShoppingCartShould {
   @Test
   void printEmptyCart() {
     Printer printer = mock(Printer.class);
-    ShoppingCart shoppingCart = new ShoppingCart(printer);
+    CartRepository repo = mock(CartRepository.class);
+    ShoppingCart shoppingCart = new ShoppingCart(printer, repo);
 
     shoppingCart.printShoppingCart();
 
@@ -45,14 +47,27 @@ public class ShoppingCartShould {
   }
 
   @Test
-  void printCartWithOneItem() {
+  void addItemToCart() {
     Printer printer = mock(Printer.class);
-    ShoppingCart shoppingCart = new ShoppingCart(printer);
+    CartRepository repo = mock(CartRepository.class);
+    ShoppingCart shoppingCart = new ShoppingCart(printer, repo);
     Product iceberg = new Product("Iceberg", 1.55, 15, 1.79, 21, 2.17);
     shoppingCart.addItem(iceberg);
 
     shoppingCart.printShoppingCart();
+    verify(repo).addItem(iceberg);
+  }
 
-    verify(printer).print(SHOPPING_CART_WITH_PRODUCT);
+  @Test
+  void printCartWithOneProduct() {
+    Printer printer = mock(Printer.class);
+    CartRepository repo = mock(CartRepository.class);
+    ShoppingCart shoppingCart = new ShoppingCart(printer, repo);
+    Product iceberg = new Product("Iceberg", 1.55, 15, 1.79, 21, 2.17);
+
+    shoppingCart.addItem(iceberg);
+    shoppingCart.printShoppingCart();
+
+    verify(printer).print(SHOPPING_CART_WITH_ONE_PRODUCT);
   }
 }
