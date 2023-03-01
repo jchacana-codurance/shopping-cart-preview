@@ -33,14 +33,14 @@ public class ShoppingCart {
       separator + "\n";
 
     String total = String.format("| Total products: %-25s|\n" +
-      "| Total price:  %s €                     |\n" +
+      "| Total price:  %-27s|\n" +
       separator, productList.size(), getFinalPrice());
 
     return header + products + promotionCode + total;
   }
 
   private String getFinalPrice() {
-    return productList.size() > 0? ""+ productList.get(0).finalCost(): "0.00";
+    return productList.size() > 0? ""+ productList.get(0).finalCost() + " €": "0.00 €";
   }
 
   private String getProducts() {
