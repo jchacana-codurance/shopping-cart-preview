@@ -44,11 +44,15 @@ public class ShoppingCart {
     String products = "";
 
     for (Product product : repository.getProducts()) {
-      products += String.format("| %-11s  | %-14s | %-8s |\n",
-        product.name(), formatFinalPrice(product), 1);
+      products += productLine(product);
     }
 
     return products;
+  }
+
+  private String productLine(Product product) {
+    return String.format("| %-11s  | %-14s | %-8s |\n",
+      product.name(), formatFinalPrice(product), 1);
   }
 
   private String formatFinalPrice(Product product) {
