@@ -37,9 +37,7 @@ public class ShoppingCart {
   }
 
   private String getFinalPrice(Integer numberOfProducts) {
-    Double finalCost = repository.getFinalCost();
-
-    return numberOfProducts > 0? ""+ String.format("%.2f", finalCost) + " €": "0.00 €";
+    return numberOfProducts > 0? String.format("%.2f", repository.getFinalCost()) + " €": "0.00 €";
   }
 
   private String getProducts() {

@@ -17,6 +17,6 @@ public class CartRepository {
   }
 
   public Double getFinalCost() {
-    return products.get(0).finalCost();
+    return products.stream().map(Product::finalCost).reduce(0.0, (Double::sum));
   }
 }
