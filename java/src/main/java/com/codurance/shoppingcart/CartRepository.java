@@ -11,4 +11,12 @@ public class CartRepository {
   public List<Product> getProducts() {
     return products;
   }
+
+  public Integer getNumberOfProducts() {
+    return products.size();
+  }
+
+  public Double getFinalCost() {
+    return products.get(0).finalCost();
+  }
 }

@@ -1,8 +1,5 @@
 package com.codurance.shoppingcart;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShoppingCart {
   Printer printer;
   private CartRepository repository;
@@ -31,15 +28,18 @@ public class ShoppingCart {
     String promotionCode = "| Promotion:                               |\n" +
       separator + "\n";
 
+    Integer numberOfProducts = repository.getNumberOfProducts();
     String total = String.format("| Total products: %-25s|\n" +
       "| Total price:  %-27s|\n" +
-      separator, repository.getProducts().size(), getFinalPrice());
+      separator, numberOfProducts, getFinalPrice(numberOfProducts));
 
     return header + products + promotionCode + total;
   }
 
-  private String getFinalPrice() {
-    return repository.getProducts().size() > 0? ""+ repository.getProducts().get(0).finalCost() + " €": "0.00 €";
+  private String getFinalPrice(Integer numberOfProducts) {
+    Double finalCost = repository.getFinalCost();
+
+    return numberOfProducts > 0? ""+ String.format("%.2f", finalCost) + " €": "0.00 €";
   }
 
   private String getProducts() {
@@ -54,7 +54,7 @@ public class ShoppingCart {
   }
 
   private String formatFinalPrice(Product product) {
-    return product.finalCost() + " €";
+    return String.format("%.2f", product.finalCost()) + " €";
   }
 
   public void addItem(Product product) {
