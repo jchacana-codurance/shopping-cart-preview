@@ -9,8 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ShoppingCartShould {
 
@@ -67,6 +70,7 @@ public class ShoppingCartShould {
   @Test
   void printCartWithOneProduct() {
     Product iceberg = new Product("Iceberg", 1.55, 15, 1.79, 21, 2.17);
+    when(repo.getProducts()).thenReturn(Arrays.asList(iceberg));
 
     shoppingCart.addItem(iceberg);
     shoppingCart.printShoppingCart();
